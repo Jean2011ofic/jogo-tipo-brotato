@@ -10,9 +10,9 @@ class Gerenciador_Pl:
 
         return cls._instance            
 
-    def __init__(self, n=None):
+    def __init__(self, tela):
         self.player = None
-        self.tela = pygame.display
+        self.tela = tela
         self.iniciado = False
 
     def iniciar_player(self):
@@ -24,5 +24,10 @@ class Gerenciador_Pl:
         if self.player is None:
             self.iniciar_player()
         return self.player
+    def atualizar_player(self):
+        if self.player:
+            self.player.atualizar_player()
+
+
     
         

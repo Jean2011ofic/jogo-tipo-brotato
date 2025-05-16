@@ -21,11 +21,11 @@ relogio = pygame.time.Clock()
 
 g_p = Gerenciador_P(tela)
 
-g_pl = Gerenciador_Pl()
+g_pl = Gerenciador_Pl(tela)
 player = g_pl.iniciar_player()
 
 ini = Inimigo(tela)
-ini.calcula_alvo()
+
 while True:
     tela.fill((0,0,0))
     relogio.tick(60)
@@ -34,10 +34,15 @@ while True:
             pygame.quit()
             sys.exit()
         
-
-    teste = pygame.draw.rect(tela,(0,0,0),(50,50,50,50))
-
-    print(teste.x)
         
+        
+
+
+    print(f"Posição do player: {g_pl.player.player_rect.x}, {g_pl.player.player_rect.y}")    
+    
+
+    g_pl.atualizar_player()
+    ini.desenhar()
+    ini.ir_ate_player()
     g_p.atualizar()
     pygame.display.flip()

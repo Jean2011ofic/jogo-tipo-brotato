@@ -20,7 +20,7 @@ class Inimigo:
         self.tela = tela
         self.recompensa_dinheiro = 10
 
-        self.g_pl = Gerenciador_Pl()
+        self.g_pl = Gerenciador_Pl(tela)
         self.player = self.g_pl.pegar_player()
         while self.player == None:
             self.player = self.g_pl.pegar_player()
@@ -39,6 +39,7 @@ class Inimigo:
         self.direcao_x = delta_x / distancia
         self.direcao_y = delta_y / distancia
     def ir_ate_player(self):
+        self.calcula_alvo()
         self.x += self.direcao_x * self.velocidade
         self.y += self.direcao_y * self.velocidade
 
