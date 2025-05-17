@@ -1,11 +1,11 @@
 import pygame
 
-from projeteis import Projeteis
-from gerenciador_p import Gerenciador_P
+from projeteis.projeteis import Projeteis
+from projeteis.gerenciador_p import Gerenciador_P
 
 import pygame
-from projeteis import Projeteis
-from gerenciador_p import Gerenciador_P
+from projeteis.projeteis import Projeteis
+from projeteis.gerenciador_p import Gerenciador_P
 from cooldown import Cooldown  # Certifique-se de que a classe tem um nome correto
 
 class Player:

@@ -1,8 +1,8 @@
 import pygame
 
-from projeteis import Projeteis
-from gerenciador_p import Gerenciador_P
-from gerenciador_pl import Gerenciador_Pl
+from projeteis.projeteis import Projeteis
+from projeteis.gerenciador_p import Gerenciador_P
+from player.gerenciador_pl import Gerenciador_Pl
 
 
 
@@ -27,7 +27,6 @@ class Inimigo:
 
 
     def desenhar(self):
-
         self.rect = pygame.draw.rect(self.tela,(255,0,0),(self.x,self.y, 50,50))
     def calcula_alvo(self):
         print(self.player.__class__)
@@ -42,5 +41,8 @@ class Inimigo:
         self.calcula_alvo()
         self.x += self.direcao_x * self.velocidade
         self.y += self.direcao_y * self.velocidade
-
+    
+    def atualizar(self):
+        self.ir_ate_player()
+        self.desenhar()
     

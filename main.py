@@ -1,12 +1,12 @@
 import pygame
 import sys
 
-from player import Player
-from projeteis import Projeteis
-from gerenciador_p import Gerenciador_P
-from gerenciador_pl import Gerenciador_Pl
-
-from inimigo import Inimigo
+from player.player import Player
+from projeteis.projeteis import Projeteis
+from projeteis.gerenciador_p import Gerenciador_P
+from player.gerenciador_pl import Gerenciador_Pl
+from inimigos.inimigo import Inimigo
+from inimigos.gerenciador_ini import Gerenciador_ini
 
 import time
 
@@ -20,9 +20,11 @@ relogio = pygame.time.Clock()
 
 
 g_p = Gerenciador_P(tela)
-
 g_pl = Gerenciador_Pl(tela)
+g_ini = Gerenciador_ini(tela)
+
 player = g_pl.iniciar_player()
+g_ini.criar_inimigo()
 
 ini = Inimigo(tela)
 
@@ -38,11 +40,10 @@ while True:
         
 
 
-    print(f"Posição do player: {g_pl.player.player_rect.x}, {g_pl.player.player_rect.y}")    
+
     
 
     g_pl.atualizar_player()
-    ini.desenhar()
-    ini.ir_ate_player()
     g_p.atualizar()
+    g_ini.atualizar_inimigos()
     pygame.display.flip()

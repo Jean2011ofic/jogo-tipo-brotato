@@ -1,5 +1,5 @@
 import pygame
-from projeteis import Projeteis
+from projeteis.projeteis import Projeteis
 
 
 projeteis_g = []
