@@ -6,7 +6,7 @@ class Projeteis:
         self.quantidade = quantidade
         self.velocidade = velocidade
         self.dano = dano
-        self.p_rect = None
+        self.p_rect : pygame.rect
         self.direcao_x = None
         self.direcao_y = None
         self.tela = tela

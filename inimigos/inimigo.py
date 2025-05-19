@@ -1,13 +1,13 @@
 import pygame
 
-from projeteis.projeteis import Projeteis
-from projeteis.gerenciador_p import Gerenciador_P
+# from projeteis.projeteis import Projeteis
 from player.gerenciador_pl import Gerenciador_Pl
 
 
 
 class Inimigo:
     def __init__(self , tela):
+        print("criando inimigo")
         self.x = 50
         self.y = 50
         self.rect = None
@@ -21,12 +21,11 @@ class Inimigo:
         self.recompensa_dinheiro = 10
 
         self.g_pl = Gerenciador_Pl(tela)
-        self.player = self.g_pl.pegar_player()
-        while self.player == None:
-            self.player = self.g_pl.pegar_player()
 
+        self.player = self.g_pl.pegar_player()
 
     def desenhar(self):
+        print("desenhando")
         self.rect = pygame.draw.rect(self.tela,(255,0,0),(self.x,self.y, 50,50))
     def calcula_alvo(self):
         print(self.player.__class__)

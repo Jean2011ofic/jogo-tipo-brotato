@@ -1,5 +1,6 @@
 import pygame
 from projeteis.projeteis import Projeteis
+from combate_manager.CollisionManager import CollisionManager
 
 
 projeteis_g = []
@@ -8,18 +9,23 @@ class Gerenciador_P:
     def __init__(self,tela):
         self.projeteis = projeteis_g
         self.tela = tela
+        self.cm = CollisionManager()
 
-    def registrar_projeteis(self, projeteis):
-        self.projeteis.append(projeteis)
-        #projeteis_g.append(projeteis)
+
+    def criar_projetil(self,x_p ,y_p, quantidade , velocidade,dano,dono, tela):
+        x = Projeteis(x_p ,y_p, quantidade , velocidade,dano,dono, tela)
+        x.desenhar()
+        x.atira()
+        self.projeteis.append(x)
+        self.cm.adicionar_ataque_a_verificacao(dono ,dano ,x.p_rect)
+
+
 
     def atualizar(self):
         for x in self.projeteis:
-            x.atualiza()
+            if isinstance(x,Projeteis):
+                x.atualiza()
 
-    # def verificar_acerto(self):
-    #     for projetil in self.projeteis:
-    #         if projetil.
             
 
     
