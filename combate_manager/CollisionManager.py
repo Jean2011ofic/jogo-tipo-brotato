@@ -1,5 +1,5 @@
 import pygame
-
+from combate_manager.gerenciador_dano import Gerenciador_Dano
 
 
 class CollisionManager:
@@ -19,14 +19,23 @@ class CollisionManager:
         self.inimigos = self.g_ini.pegar_inimigos()
         print(self.inimigos)
         self.ataques_em_progresso = []
+        self.gd = Gerenciador_Dano()
 
     def verificar_ataques(self):
-        for ataque in self.ataques_em_progresso:
+        self.inimigos = self.g_ini.pegar_inimigos()
+        print("verificando ataques")
+        for ataque in self.ataques_em_progresso:           
             if ataque["tipo"] == "player":
-                if isinstance(ataque["rect"], pygame.Rect):
+                ar = ataque["rect"]
+                if isinstance(ar, pygame.Rect):
+                    print("verificando colisao com inimigos")
                     for inimigo in self.inimigos:
-                        if ataque["rect"].colliderect(inimigo.rect):
-                            print("acertou inimigo")
+                        from inimigos.inimigo import Inimigo
+                        if isinstance(inimigo, Inimigo):
+                            print("verificando colisao com inimigo")
+                            if ar.colliderect(inimigo.rect):
+                                print("acertou inimigo")
+                                self.inimigos.remove(inimigo)
 
     def adicionar_ataque_a_verificacao(self,tipo,dano,rect):
         self.ataques_em_progresso.append({

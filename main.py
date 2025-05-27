@@ -50,7 +50,6 @@ while True:
     g_pl.atualizar_player()
     g_p.atualizar()
     g_ini.atualizar_inimigos()
-
     cm.verificar_ataques()
 
     pygame.display.flip()
