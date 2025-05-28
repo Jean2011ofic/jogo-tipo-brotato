@@ -48,7 +48,7 @@ while True:
         c_t.entrar_c(1000)
 
 
-    
+
 
     g_pl.atualizar_player()
     g_p.atualizar()
