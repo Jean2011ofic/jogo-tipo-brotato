@@ -35,7 +35,9 @@ class CollisionManager:
                             print("verificando colisao com inimigo")
                             if ar.colliderect(inimigo.rect):
                                 print("acertou inimigo")
-                                self.inimigos.remove(inimigo)
+                                if inimigo.receber_dano(ataque["dano"]):
+                                    self.inimigos.remove(inimigo)
+                                self.ataques_em_progresso.remove(ataque)
 
     def adicionar_ataque_a_verificacao(self,tipo,dano,rect):
         self.ataques_em_progresso.append({

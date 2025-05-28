@@ -6,6 +6,7 @@ from projeteis.gerenciador_p import Gerenciador_P
 from player.gerenciador_pl import Gerenciador_Pl
 from inimigos.gerenciador_ini import Gerenciador_ini
 from combate_manager.CollisionManager import CollisionManager
+from cooldown import Cooldown  # Certifique-se de que a classe tem um nome correto
 
 
 import time
@@ -30,7 +31,8 @@ g_ini.criar_inimigo()
 cm = CollisionManager()
 
 
-
+c_t = Cooldown()
+c_t.entrar_c(1000)
 
 while True:
     tela.fill((0,0,0))
@@ -41,8 +43,9 @@ while True:
             sys.exit()
         
         
-        
-
+    if c_t.verificar():     
+        g_ini.criar_inimigo()
+        c_t.entrar_c(1000)
 
 
     

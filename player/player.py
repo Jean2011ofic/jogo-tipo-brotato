@@ -25,6 +25,7 @@ class Player:
         self.projeteis = []
         self.dinheiro = 0
         self.atqps = 2
+        self.dano = 1
 
         # Cooldown do tiro
         self.c_t = Cooldown()
@@ -47,7 +48,7 @@ class Player:
         # Adicionando cooldown ao disparo do projétil
         if pygame.mouse.get_pressed()[0]:  
             if self.c_t.verificar():  # Só dispara se o cooldown permitir
-                self.g_p.criar_projetil(self.x_player, self.y_player, 1, 20, 1, "player", self.tela)
+                self.g_p.criar_projetil(self.x_player, self.y_player, 1, 20, self.dano, "player", self.tela)
                 self.c_t.entrar_c((1 / self.atqps) * 1000)  # Reinicia o cooldown corretamente após cada tiro
 
     def atualizar_player(self):

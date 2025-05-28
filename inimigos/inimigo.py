@@ -14,7 +14,7 @@ class Inimigo:
         
         self.velocidade = 10
         self.dano = 1
-        self.vida = 10
+        self.vida = 2
         self.atqs = 1
 
         self.tela = tela
@@ -44,4 +44,14 @@ class Inimigo:
     def atualizar(self):
         self.ir_ate_player()
         self.desenhar()
-    
+    def verificar_morreu(self):
+        if self.vida <= 0:
+            print("inimigo morreu")
+            return True
+        return False
+    def receber_dano(self, dano):
+        print("recebendo dano")
+        self.vida -= dano
+        if self.verificar_morreu():
+            return True
+        return False

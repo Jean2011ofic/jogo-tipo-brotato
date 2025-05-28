@@ -6,7 +6,5 @@ class Gerenciador_Dano:
     
     def dar_dano(self, inimigo, dano):
         
-        if hasattr(inimigo, 'vida'):
-            inimigo.vida -= dano
-            if inimigo.vida <= 0:
-                print(f"Inimigo {inimigo} derrotado!")
+        if inimigo.receber_dano(dano):
+            self.remover_inimigo(inimigo)
